@@ -2,6 +2,7 @@ package com.easybytes.accounts.controller.impl;
 
 import com.easybytes.accounts.constants.AccountsConstants;
 import com.easybytes.accounts.controller.IAccountsController;
+import com.easybytes.accounts.dto.AccountsContactInfoDto;
 import com.easybytes.accounts.dto.CustomerDto;
 import com.easybytes.accounts.dto.ErrorResponseDto;
 import com.easybytes.accounts.dto.ResponseDto;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.*;
 public class AccountsController implements IAccountsController {
 
     private final IAccountsService iAccountsService;
+    private final AccountsContactInfoDto accountsContactInfoDto;
 
     @Override
     public ResponseEntity<ResponseDto> createAccount(@Valid @RequestBody CustomerDto customerDto) {
@@ -69,5 +71,12 @@ public class AccountsController implements IAccountsController {
                     .status(HttpStatus.EXPECTATION_FAILED)
                     .body(new ResponseDto(AccountsConstants.STATUS_417, AccountsConstants.MESSAGE_417_DELETE));
         }
+    }
+
+    @Override
+    public ResponseEntity<AccountsContactInfoDto> getContactInfo() {
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(accountsContactInfoDto);
     }
 }

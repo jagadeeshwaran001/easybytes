@@ -54,6 +54,7 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -67,6 +68,7 @@
 	</dependencyManagement>
 
 	<build>
+        <finalName>configserver</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
